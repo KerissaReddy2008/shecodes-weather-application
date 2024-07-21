@@ -34,11 +34,20 @@ let currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
 
 function displayTemperature(response) {
-  let temperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#temperature");
+  let temperature = Math.round(response.data.temperature.current);
   let currentCity = document.querySelector("#current-city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector ("#humidity");
+  let windSpeedElement = document.querySelector ("#wind-speed");
+
+
   currentCity.innerHTML = response.data.city;
+  descriptionElement.innerHTML= response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windSpeedElement.innerHTML = `${response.data.wind.speed} km/h`;
   temperatureElement.innerHTML = `${temperature}`;
+  
 }
 
 function search(event) {
