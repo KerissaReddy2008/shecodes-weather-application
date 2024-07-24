@@ -47,6 +47,40 @@ function formatDate (date) {
 
 } 
 
+function getForecast(city) {
+  let apiKey = "44afe8df0cto8bd61386ce03b2c7b34e";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat",];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml = 
+      forecastHtml + 
+      `
+      <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature">
+            <strong>15°</strong>
+          </div>
+          <div class="weather-forecast-temperature">9°</div>
+        </div>
+      </div>
+      `;
+  });
+
+  forecastElement.innerHTML = forecastHtml;
+}
+
+
+
 
 
 function search(event) {
@@ -58,3 +92,6 @@ function search(event) {
 
   axios.get(apiUrl).then(displayTemperature);
 }
+
+getForecast ();
+displayForecast();
